@@ -20,6 +20,6 @@ class SaleCoupon(models.Model):
         compatible with all scanners.
          """
 
-        return str(random.getrandbits(25))
+        return str(random.getrandbits(30))
 
     code = fields.Char(default=_generate_new_code, required=True, readonly=True)
