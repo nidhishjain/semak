@@ -17,5 +17,6 @@
         'security/groups.xml',
         'templates/assets.xml',
     ],
+'qweb': ['static/src/xml/posticket.xml'],
     'installable': True,
 }
