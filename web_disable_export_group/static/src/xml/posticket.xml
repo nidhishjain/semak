@@ -9,27 +9,58 @@
         <button type="button" class="btn btn-primary o_list_button_save" accesskey="s">
             Save
         </button>
-        <button type="button" class="btn btn-secondary o_list_button_discard" accesskey="j">
+            <button type="button" class="btn btn-secondary o_list_button_discard" accesskey="j">
             Discard
         </button>
-        <t t-if="widget.is_action_enabled('create')">
+            <t t-if="widget.is_action_enabled('create')">
             <button type="button" class="btn btn-primary o_list_button_add" accesskey="c">
                 Create
             </button>
         </t>
-<!--        <t t-if="widget.is_action_enabled('export_xlsx')">-->
-<!--            <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All"/>-->
-<!--        </t>-->
+            <!--        <t t-if="widget.is_action_enabled('export_xlsx')">-->
+            <!--            <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All"/>-->
+            <!--        </t>-->
     </div>
 
     </t>
 
 </t>
 
+
     <t t-extend="Chrome">
     <t t-jquery='.pos-logo' t-operation='replace'>        
         <img class="pos-logo" src="/web/binary/company_logo"/>
     </t>
+</t>
+    <t t-extend="BillsListView.buttons">
+    <t t-jquery="div[class*='o_list_buttons']" t-operation="replace">
+        <div class="o_list_buttons" role="toolbar" aria-label="Main actions">
+        <button type="button" class="btn btn-primary o_list_button_save" accesskey="s">
+            Save
+        </button>
+            <button type="button" class="btn btn-secondary o_list_button_discard" accesskey="j">
+            Discard
+        </button>
+            <t t-if="widget.is_action_enabled('create')">
+            <button type="button" class="btn btn-primary o_list_button_add" accesskey="c">
+                Create
+            </button>
+        </t>
+            <t t-js="ctx">
+                if (window.odoo._modules.indexOf("base_import") >= 0) {
+                    r.push(context.engine.tools.call(context, 'ImportView.import_button', dict));
+                };
+            </t>
+            <button type="button" class="btn btn-secondary o_button_upload_bill">
+                Upload
+            </button>
+            <!--        <t t-if="widget.is_action_enabled('export_xlsx')">-->
+            <!--            <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All"/>-->
+            <!--        </t>-->
+    </div>
+
+    </t>
+
 </t>
 
 </templates>
